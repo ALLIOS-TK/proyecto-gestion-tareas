@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de tareas</title>
+</head>
+<body>
+
+    <h1>Mis tareas</h1>
+
+    <a href="/registrar/">Registrar nueva tarea</a>
+
+    <hr>
+
+    {% if tareas %}
+
+        {% for tarea in tareas %}
+
+            <h2>{{ tarea.titulo }}</h2>
+
+            <p>{{ tarea.descripcion }}</p>
+
+            <p>
+                Fecha de creación: {{ tarea.fecha_creacion }}
+            </p>
+
+            <p>
+                Estado:
+                {% if tarea.completada %}
+                    Completada
+                {% else %}
+                    Pendiente
+                {% endif %}
+            </p>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>Aún no hay tareas registradas.</p>
+
+    {% endif %}
+
+</body>
+</html>
